@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/body_container"
+    android:background="@color/white"
+    tools:context=".Home">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+        <TextView
+            android:id="@+id/tvGreeting"
+            android:textStyle="italic"
+            android:layout_marginStart="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view"
+            android:textAlignment="viewStart"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:textStyle="bold"
+            android:layout_alignStart="@id/tvGreeting"
+            android:textColor="@color/mainBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvGreeting"
+            android:textAlignment="viewStart"
+            android:textSize="30sp" />
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_toRightOf="@id/tvName"
+            android:layout_alignTop="@id/tvGreeting"
+            android:layout_marginTop="5dp"
+            android:scaleType="fitCenter"
+            android:layerType="software"
+            android:layout_marginStart="80dp"
+            android:src="@drawable/ic_day"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/gif"/>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/tvName"/>
+
+        <TextView
+            android:id="@+id/tvApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/tvGreeting"
+            android:text="your next appointment"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@id/view2"/>
+
+        <LinearLayout
+            android:layout_alignStart="@id/tvGreeting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvApp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/round_bar_light_white"
+            android:orientation="vertical"
+            android:id="@+id/layoutAppt"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7:00 AM"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvClientName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Client Name" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/notepadContainer"
+            android:layout_alignStart="@id/tvGreeting"
+            android:layout_marginEnd="20dp"
+            android:layout_below="@id/layoutAppt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/btmNavMenu"
+            />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btmNavMenu"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/round_bar"
+        android:elevation="2dp"
+        app:itemIconSize="25dp"
+        app:itemIconTint="@drawable/icon_selector"
+        app:itemRippleColor="@android:color/transparent"
+        app:itemBackground="@android:color/transparent"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/icon_menu"
+        />
+
+
+</RelativeLayout>
