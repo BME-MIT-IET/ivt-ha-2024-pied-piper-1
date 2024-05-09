@@ -36,4 +36,43 @@ class RegistrationSystemTest {
 
     // Add similar tests for phone, certID, pracID, and password validation
 
+    @Test
+    fun testPracIDValidation() {
+        val validPracID = "7890"
+        DocModel.pracID = validPracID
+        assertEquals(validPracID, DocModel.pracID)
+
+        // Test empty pracID
+        assertThrows(IllegalArgumentException::class.java) {
+            DocModel.pracID = ""
+        }
+    }
+
+    @Test
+    fun testPasswordValidation() {
+        val validPassword = "P@ssw0rd"
+        DocModel.password = validPassword
+        assertEquals(validPassword, DocModel.password)
+
+        // Test empty password
+        assertThrows(IllegalArgumentException::class.java) {
+            DocModel.password = ""
+        }
+
+        // Test password less than 8 characters
+        assertThrows(IllegalArgumentException::class.java) {
+            DocModel.password = "12345"
+        }
+
+        // Test password without special characters
+        assertThrows(IllegalArgumentException::class.java) {
+            DocModel.password = "Password123"
+        }
+
+        // Test password without digits
+        assertThrows(IllegalArgumentException::class.java) {
+            DocModel.password = "Password@"
+        }
+
+    }
 }
