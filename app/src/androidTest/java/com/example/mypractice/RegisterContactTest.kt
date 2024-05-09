@@ -77,7 +77,7 @@ class RegisterContactTest {
         onView(withId(R.id.imBack)).perform(click())
         Thread.sleep(1000)
 
-        //Intents.intended(hasComponent(Login::class.java.name))
+        
         // Check if the email field is displayed, ensuring you're back at the Login activity
         onView(withId(R.id.etEmail)).inRoot(RootMatchers.isFocusable()).check(matches(isDisplayed()))
 
