@@ -17,7 +17,6 @@ class RegistrationSystemTest {
             DocModel.name = ""
         }
 
-        // Add more test cases for name validation as needed
     }
 
     @Test
@@ -31,10 +30,7 @@ class RegistrationSystemTest {
             DocModel.email = "invalid_email"
         }
 
-        // Add more test cases for email validation as needed
     }
-
-    // Add similar tests for phone, certID, pracID, and password validation
 
     @Test
     fun testPracIDValidation() {
