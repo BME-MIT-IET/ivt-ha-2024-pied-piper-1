@@ -40,3 +40,17 @@ Tests the login functionality of the application by simulating user input and ch
 
 **Login Success Test**: entering valid credentials and verifying the login process completes successfully, transitioning from the login screen.
 **Login Rejection Test**: entering invalid credentials and verifying the login process does not succeed in this conditions.
+
+### AddAppointmentTest
+
+The test checks the functionality of the adding a new appointment by simulating  correct
+and incorrect user inputs and checking system responses:
+
+**Add Appointment Success Test**: entering valid patient, date and time and 
+verifying the creating a new appointment process completes successfully, 
+transitioning from the appointments screen.
+**Add Appointment Error Test**: entering valid patient,  but not entering date nor time.
+Verifying the creating a new appointment process does not complete successfully,
+staying on the add appointment screen.
+**Go Back Test**: checking if click on `GoBack` button and accepting to discard changes
+leads to the appointment screen.
