@@ -1,0 +1,5 @@
+# Manual Code Review Summary
+
+We completed manual code review on the majority of the kotlin code on the "New Project" commit (as there were no prior pull requests on this repository). During this process, we identified several repeating issues in the code. Primarily, inconsistent separation of concerns, especially in regards to accessing the database. While there is a service class `FirebaseUtil.kt` dedicated to database queries, oftentimes classes/ activities will directly access and query the database themselves without using the Util class. This can cause issues with troubleshooting and maintainability. 
+
+Furthermore, there were many occurences of inconsistent naming conventions. Abbreviations are used inconsistently, with methods within the same class having both "Doc" and "Doctor" in their function calls. This can effect how easy and intuitive the code is to use. Finally several activity classes exhibited spaghetti code, with all code residing within the `onCreate()` method. This made the code significantly less readible harder to maintain. 
