@@ -35,7 +35,7 @@ class Home : AppCompatActivity() {
 
 
         //setting the greeting
-        binding.tvGreeting.setText(getGreeting())
+        binding.tvGreeting.setText(getGreeting(Calendar.getInstance()))
         FirebaseUtil.getDoctorNameByEmail { name ->
             binding.tvName.setText("Dr. " + name)
         }
@@ -43,7 +43,7 @@ class Home : AppCompatActivity() {
 
 
         //setting up the appt display
-        getAppt()
+        //getAppt()
 
 
         //changing the activity when menu item is selected
@@ -84,8 +84,7 @@ class Home : AppCompatActivity() {
             else -> return false
         }
     }
-    fun getGreeting():String {
-        val calendar = Calendar.getInstance()
+    fun getGreeting(calendar: Calendar): String {
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
 
         return when {
@@ -94,9 +93,7 @@ class Home : AppCompatActivity() {
             hour in 17..23 -> "good evening"
             else -> ""
         }
-
     }
-
     fun getGif(): Int {
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
@@ -127,27 +124,31 @@ class Home : AppCompatActivity() {
             // Execute the query
             query.get()
                 .addOnSuccessListener { documents ->
-                    for (document in documents) {
-                        // Parse and process the first appointment document
-                        val time = document.getTimestamp("date")?.toDate()
-                        val clientName = document.getString("clientName")
+                    runOnUiThread {
+                        for (document in documents) {
+                            // Parse and process the first appointment document
+                            val time = document.getTimestamp("date")?.toDate()
+                            val clientName = document.getString("clientName")
 
-                        // Create Appointment object and assign it to nextAppointment
-                        nextAppointment = Appointment(clientName ?: "", time ?: Date())
+                            // Create Appointment object and assign it to nextAppointment
+                            nextAppointment = Appointment(clientName ?: "", time ?: Date())
 
 
-                        binding.tvClientName.text = nextAppointment.clientName
-                        binding.tvTime.text = SimpleDateFormat("dd MMM h:mm a", Locale.getDefault()).format(nextAppointment.time)
-                        // using a break to get out of the loop since i only need the first appointment
-                        break
+                            binding.tvClientName.text = nextAppointment.clientName
+                            binding.tvTime.text =
+                                SimpleDateFormat("dd MMM h:mm a", Locale.getDefault()).format(
+                                    nextAppointment.time
+                                )
+                            // using a break to get out of the loop since i only need the first appointment
+                            break
+                        }
+                        if (documents.size() == 0) {
+                            //display that there are no upcoming appts
+                            binding.tvClientName.text = "No future appointments created"
+                            binding.tvTime.text = ""
+                        }
+                        //Log.d("appointments", "Number of appointments after query: " + appointmentsList.size)
                     }
-                    if (documents.size() == 0)
-                    {
-                        //display that there are no upcoming appts
-                        binding.tvClientName.text = "No future appointments created"
-                        binding.tvTime.text = ""
-                    }
-                    //Log.d("appointments", "Number of appointments after query: " + appointmentsList.size)
                 }
                 .addOnFailureListener { exception ->
                     //Log.e("Appointments", "Failed to query appointments", exception)
