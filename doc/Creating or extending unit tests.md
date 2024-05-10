@@ -43,3 +43,18 @@ within the `DocModel`. It includes:
 **PracID Assignment Test**: checking similar to the CertID test, but for practitioner IDs.
 **Both IDs Assignment Test**: checking and verifying the simultaneous assignment of both 
 certification and practitioner IDs.
+
+**Test for correct name input:**
+```Kotlin
+@Test
+    fun testNameValidation() {
+        val validName = "John Doe"
+        DocModel.name = validName
+        assertEquals(validName, DocModel.name)
+
+        // Test empty name
+        assertThrows(IllegalArgumentException::class.java) {
+            DocModel.name = ""
+        }
+    }
+```
