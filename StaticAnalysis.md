@@ -1,0 +1,1 @@
+For the static analysis we used Lint which is an android studio tool that helps detect potential issues bugs and coding style violations in the source code without executing it.We added Lint to our project to make  our code better and find mistakes easily .
