@@ -80,7 +80,6 @@ class RegisterContactTest {
         
         // Check if the email field is displayed, ensuring you're back at the Login activity
         onView(withId(R.id.etEmail)).inRoot(RootMatchers.isFocusable()).check(matches(isDisplayed()))
-
         // Additionally, check for the presence of both the login button and the registration text,
         // which are unique to the Login activity
         onView(withId(R.id.btnLogin)).inRoot(RootMatchers.isFocusable()).check(matches(isDisplayed()))

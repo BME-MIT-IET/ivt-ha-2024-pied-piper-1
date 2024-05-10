@@ -69,6 +69,5 @@ class RegistrationSystemTest {
         assertThrows(IllegalArgumentException::class.java) {
             DocModel.password = "Password@"
         }
-
     }
 }

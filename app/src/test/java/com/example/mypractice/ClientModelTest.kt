@@ -1,3 +1,5 @@
+package com.example.mypractice
+
 import com.example.mypractice.model.ClientModel
 import org.junit.Test
 import org.junit.Assert.*
